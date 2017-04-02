@@ -3,11 +3,17 @@
 
 extern struct Game Game;
 
+void enemy_init(struct Enemy* enemy)
+{
+    printf("test\n");
+    fflush(stdout);
+    enemy->texture = Game.gfx.buildSprite(enemy->filename);
+}
+
 void enemy_render(struct Enemy* enemy)
 {
-    SDL_Texture* tex = Game.gfx.buildSprite(enemy->filename);
     SDL_Rect rect = {(int)enemy->x, (int)enemy->y, enemy->w, enemy->h};
-    Game.screen.drawSprite(tex, &rect);
+    Game.screen.drawSprite(enemy->texture, &rect);
 }
 
 void enemy_update(struct Enemy* enemy)

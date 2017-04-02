@@ -49,6 +49,7 @@ void game_init(void)
 
     Player.init();
 
+    // Init enemies
     for (int i = 0; i < NUM_OF_ENEMIES; i++) {
         int enemyW = 15 * SCREEN_SCALE;
         int enemyH = 46 * SCREEN_SCALE;
@@ -65,6 +66,8 @@ void game_init(void)
         Game.enemies[i].filename = "girl_1.png";
         Game.enemies[i].render = enemy_render;
         Game.enemies[i].update = enemy_update;
+        Game.enemies[i].init = enemy_init;
+        Game.enemies[i].init(&Game.enemies[i]);
     }
 }
 
@@ -72,6 +75,7 @@ void game_update()
 {
     Player.update();
 
+    // Update enemies
     for (int i = 0; i < NUM_OF_ENEMIES; i++) {
         Game.enemies[i].update(&Game.enemies[i]);
     }

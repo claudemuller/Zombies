@@ -12,6 +12,7 @@ struct Player Player = {
     0,
     4.0f,
     "girl_1.png",
+    NULL,
 
     player_init,
     player_render,
@@ -22,13 +23,13 @@ void player_init()
 {
     Player.x = (Game.screen.w - Player.w) / 2;
     Player.y = (Game.screen.h - Player.h) / 2;
+    Player.texture = Game.gfx.buildSprite(Player.filename);
 }
 
 void player_render()
 {
-    SDL_Texture* tex = Game.gfx.buildSprite(Player.filename);
     SDL_Rect rect = {(int)Player.x, (int)Player.y, Player.w, Player.h};
-    Game.screen.drawSprite(tex, &rect);
+    Game.screen.drawSprite(Player.texture, &rect);
 }
 
 void player_update()

@@ -1,9 +1,7 @@
 #ifndef _PLAYER_H
 #define _PLAYER_H
 
-void player_init(void);
-void player_render(void);
-void player_update(void);
+#include <SDL2/SDL.h>
 
 extern struct Player {
     int w, h;
@@ -11,10 +9,15 @@ extern struct Player {
     float dx, dy;
     float speed;
     const char* filename;
+    SDL_Texture* texture;
 
     void (*init)(void);
     void (*render)(void);
     void (*update)(void);
 };
+
+void player_init(void);
+void player_render(void);
+void player_update(void);
 
 #endif //_PLAYER_H

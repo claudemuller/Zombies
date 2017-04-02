@@ -1,5 +1,4 @@
 #include "game.h"
-#include "enemy.h"
 
 extern struct Game Game;
 extern struct Player Player;
@@ -11,6 +10,7 @@ void gfx_render()
 
     Player.render();
 
+    // Render enemies
     for (int i = 0; i < NUM_OF_ENEMIES; i++) {
         Game.enemies[i].render(&Game.enemies[i]);
     }
