@@ -6,11 +6,13 @@
 #include <SDL2/SDL_image.h>
 
 #include "player.h"
+#include "enemy.h"
 
 #define SCREEN_SCALE 1
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 #define SCREEN_NAME "Zombies"
+#define NUM_OF_ENEMIES 2
 
 void game_init(void);
 void game_shutdown(int);
@@ -24,6 +26,7 @@ void error(const char*);
 
 extern struct Game {
     int running;
+    struct Enemy enemies[NUM_OF_ENEMIES];
 
     struct {
         unsigned int w;

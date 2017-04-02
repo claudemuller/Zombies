@@ -6,16 +6,23 @@ extern struct Game Game;
 struct Player Player = {
     15 * SCREEN_SCALE,
     46 * SCREEN_SCALE,
-    SDL_WINDOWPOS_CENTERED,
-    SDL_WINDOWPOS_CENTERED,
+    0,
+    0,
     0,
     0,
     4.0f,
     "girl_1.png",
 
+    player_init,
     player_render,
     player_update
 };
+
+void player_init()
+{
+    Player.x = (Game.screen.w - Player.w) / 2;
+    Player.y = (Game.screen.h - Player.h) / 2;
+}
 
 void player_render()
 {

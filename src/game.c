@@ -3,9 +3,38 @@
 
 extern struct Player Player;
 extern struct Enemy Enemy;
+//extern struct Enemy enemies[100];
 
 struct Game Game = {
     SDL_TRUE,
+    {
+        {
+            15 * SCREEN_SCALE,
+            46 * SCREEN_SCALE,
+            10,
+            10,
+            0,
+            0,
+            2.0f,
+            "girl_1.png",
+
+            enemy_render,
+            enemy_update
+        },
+        {
+            15 * SCREEN_SCALE,
+            46 * SCREEN_SCALE,
+            30,
+            10,
+            0,
+            0,
+            1.0f,
+            "girl_1.png",
+
+            enemy_render,
+            enemy_update
+        }
+    },
     {
         SCREEN_WIDTH * SCREEN_SCALE,
         SCREEN_HEIGHT * SCREEN_SCALE,
@@ -45,16 +74,22 @@ void game_init(void)
 
     Game.running = SDL_TRUE;
 
-    struct Enemy enemies[100];
-    for (int i = 0; i < 100; i++) {
-        printf("test");
+    Player.init();
+
+    for (int i = 0; i < NUM_OF_ENEMIES; i++) {
+//        Game.enemies[i].x = 10 * i;
+//        printf("enemy[%d].x = %f\n", i, Game.enemies[i].x);
     }
 }
 
 void game_update()
 {
     Player.update();
-    Enemy.update();
+
+    for (int i = 0; i < NUM_OF_ENEMIES; i++) {
+//        Game.enemies[i].update();
+//        printf("enemy[%d].update\n", i);
+    }
 }
 
 void game_shutdown(int withError)

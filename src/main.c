@@ -16,8 +16,8 @@ int main(int argc, char* argv[])
         oldTime = currentTime;
         currentTime = SDL_GetPerformanceCounter();
         dt = ((currentTime - oldTime) * 1000 / (double)SDL_GetPerformanceFrequency() );
-        printf("%f\n", dt);
-        fflush(stdout);
+//        printf("%f\n", dt);
+//        fflush(stdout);
 
         Game.update();
         Game.gfx.render();
