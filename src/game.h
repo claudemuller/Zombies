@@ -12,7 +12,7 @@
 #define SCREEN_WIDTH 800
 #define SCREEN_HEIGHT 600
 #define SCREEN_NAME "Zombies"
-#define NUM_OF_ENEMIES 2
+#define NUM_OF_ENEMIES 10
 
 void game_init(void);
 void game_shutdown(int);

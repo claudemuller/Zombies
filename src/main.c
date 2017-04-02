@@ -22,7 +22,7 @@ int main(int argc, char* argv[])
         Game.update();
         Game.gfx.render();
 
-        SDL_Delay((Uint32)dt);
+//        SDL_Delay((Uint32)dt);
     }
 
     Game.shutdown(SDL_FALSE);

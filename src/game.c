@@ -1,38 +1,11 @@
 #include "game.h"
-#include "enemy.h"
 
 extern struct Player Player;
 extern struct Enemy Enemy;
-//extern struct Enemy enemies[100];
 
 struct Game Game = {
     SDL_TRUE,
-    {
-        {
-            15 * SCREEN_SCALE,
-            46 * SCREEN_SCALE,
-            10,
-            10,
-            2.0f,
-            2.0f,
-            "girl_1.png",
-
-            enemy_render,
-            enemy_update
-        },
-        {
-            15 * SCREEN_SCALE,
-            46 * SCREEN_SCALE,
-            30,
-            10,
-            1.8f,
-            1.8f,
-            "girl_1.png",
-
-            enemy_render,
-            enemy_update
-        }
-    },
+    {},
     {
         SCREEN_WIDTH * SCREEN_SCALE,
         SCREEN_HEIGHT * SCREEN_SCALE,
@@ -75,8 +48,15 @@ void game_init(void)
     Player.init();
 
     for (int i = 0; i < NUM_OF_ENEMIES; i++) {
-//        Game.enemies[i].x = 10 * i;
-//        printf("enemy[%d].x = %f\n", i, Game.enemies[i].x);
+        Game.enemies[i].w = 15 * SCREEN_SCALE;
+        Game.enemies[i].h = 46 * SCREEN_SCALE;
+        Game.enemies[i].x = 10 * i;
+        Game.enemies[i].y = 10 * i;
+        Game.enemies[i].dx = 2.0f;
+        Game.enemies[i].dy = 2.0f;
+        Game.enemies[i].filename = "girl_1.png";
+        Game.enemies[i].render = enemy_render;
+        Game.enemies[i].update = enemy_update;
     }
 }
 
