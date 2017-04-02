@@ -43,17 +43,25 @@ void game_init(void)
                                               SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     if (Game.screen.renderer == NULL) error("Failed to create renderer");
 
+    srand((unsigned int)time(NULL));
+
     Game.running = SDL_TRUE;
 
     Player.init();
 
     for (int i = 0; i < NUM_OF_ENEMIES; i++) {
-        Game.enemies[i].w = 15 * SCREEN_SCALE;
-        Game.enemies[i].h = 46 * SCREEN_SCALE;
-        Game.enemies[i].x = 10 * i;
-        Game.enemies[i].y = 10 * i;
-        Game.enemies[i].dx = 2.0f;
-        Game.enemies[i].dy = 2.0f;
+        int enemyW = 15 * SCREEN_SCALE;
+        int enemyH = 46 * SCREEN_SCALE;
+        int randX = rand() % (Game.screen.w - enemyW - 0 + 1) + 0;
+        int randY = rand() % (Game.screen.h - enemyH - 0 + 1) + 0;
+        int randDx = rand() % (2 - (-2) + 1) + (-2);
+        int randDy = rand() % (2 - (-2) + 1) + (-2);
+        Game.enemies[i].w = enemyW;
+        Game.enemies[i].h = enemyH;
+        Game.enemies[i].x = randX;
+        Game.enemies[i].y = randY;
+        Game.enemies[i].dx = randDx;
+        Game.enemies[i].dy = randDy;
         Game.enemies[i].filename = "girl_1.png";
         Game.enemies[i].render = enemy_render;
         Game.enemies[i].update = enemy_update;

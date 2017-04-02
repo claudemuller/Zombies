@@ -2,6 +2,7 @@
 #define _GAME_H
 
 #include <stdio.h>
+#include <time.h>
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 
