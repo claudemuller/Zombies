@@ -13,7 +13,6 @@ void gfx_render()
 
     for (int i = 0; i < NUM_OF_ENEMIES; i++) {
         Game.enemies[i].render(&Game.enemies[i]);
-//        printf("enemy[%d].render\n", i);
     }
 
     SDL_RenderPresent(Game.screen.renderer);

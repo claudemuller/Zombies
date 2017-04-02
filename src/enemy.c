@@ -3,20 +3,6 @@
 
 extern struct Game Game;
 
-//struct Enemy Enemy = {
-//    15 * SCREEN_SCALE,
-//    46 * SCREEN_SCALE,
-//    10,
-//    10,
-//    0,
-//    0,
-//    2.0f,
-//    "girl_1.png",
-//
-//    enemy_render,
-//    enemy_update
-//};
-
 void enemy_render(struct Enemy* enemy)
 {
     SDL_Texture* tex = Game.gfx.buildSprite(enemy->filename);
@@ -24,20 +10,18 @@ void enemy_render(struct Enemy* enemy)
     Game.screen.drawSprite(tex, &rect);
 }
 
-void enemy_update()
+void enemy_update(struct Enemy* enemy)
 {
-//    Enemy.dy = Enemy.speed;
-//    Enemy.dx = Enemy.speed;
-//    Enemy.x = Enemy.x + Enemy.dx;
-//    Enemy.y = Enemy.y + Enemy.dy;
-//
-//    detectCollision();
+    enemy->x = enemy->x + enemy->dx;
+    enemy->y = enemy->y + enemy->dy;
+
+    detectCollision(enemy);
 }
 
-void detectCollision()
+void detectCollision(struct Enemy* enemy)
 {
-//   if (Enemy.x < 0) Enemy.dx = -1 * Enemy.speed;
-//   else if (Enemy.x > Game.screen.w - Enemy.w) Enemy.dx = -1 * Enemy.speed;
-//   else if (Enemy.y < 0) Enemy.dy = -1 * Enemy.speed;
-//   else if (Enemy.y > Game.screen.h - Enemy.h) Enemy.dy = -1 * Enemy.speed;
+    if (enemy->x < 0) enemy->dx = -enemy->dx;
+    else if (enemy->x > Game.screen.w - enemy->w) enemy->dx = -enemy->dx;
+    else if (enemy->y < 0) enemy->dy = -enemy->dy;
+    else if (enemy->y > Game.screen.h - enemy->h) enemy->dy = -enemy->dy;
 }

@@ -13,8 +13,7 @@ struct Game Game = {
             46 * SCREEN_SCALE,
             10,
             10,
-            0,
-            0,
+            2.0f,
             2.0f,
             "girl_1.png",
 
@@ -26,9 +25,8 @@ struct Game Game = {
             46 * SCREEN_SCALE,
             30,
             10,
-            0,
-            0,
-            1.0f,
+            1.8f,
+            1.8f,
             "girl_1.png",
 
             enemy_render,
@@ -87,8 +85,7 @@ void game_update()
     Player.update();
 
     for (int i = 0; i < NUM_OF_ENEMIES; i++) {
-//        Game.enemies[i].update();
-//        printf("enemy[%d].update\n", i);
+        Game.enemies[i].update(&Game.enemies[i]);
     }
 }
 
